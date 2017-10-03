@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: payment
+  name: payment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        role: payment
+    spec:
+      containers:
+      - name: payme
+        image: caseydavenport/payment
+        imagePullPolicy: Always

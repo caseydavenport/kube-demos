@@ -1,0 +1,17 @@
+# Installs a redis database which will store our
+# customer's data.
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: user-data
+  name: redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        db: redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:alpine

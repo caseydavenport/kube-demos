@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: devel
+  name: user-query
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: user-query
+    spec:
+      containers:
+      - name: query
+        image: caseydavenport/user-query
+        imagePullPolicy: Always

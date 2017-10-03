@@ -1,0 +1,12 @@
+# This Service selects our redis deployment.
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: user-data
+  name: redis
+spec:
+  ports:
+  - port: 6379
+    protocol: TCP
+  selector:
+    db: redis
