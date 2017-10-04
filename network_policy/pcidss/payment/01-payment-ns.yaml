@@ -4,3 +4,4 @@ metadata:
   name: payment
   labels:
     role: payment
+    tier: production

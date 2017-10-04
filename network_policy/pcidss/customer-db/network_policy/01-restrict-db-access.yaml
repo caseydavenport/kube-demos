@@ -1,0 +1,23 @@
+# This NetworkPolicy allows traffic only from pods
+# in production namespaces allowed to access this data.
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: production-only
+  namespace: user-data
+spec:
+  # Apply to all pods in this namespace.
+  podSelector:
+    matchLabels: {}
+  ingress:
+    # Allow from the payment service currently
+    # in production.
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          role: payment
+          tier: production
+    ports:
+      # Only allow connections to TCP 6379.
+    - port: 6379
+      protocol: TCP

@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: devel
   labels:
-    role: development
+    tier: dev

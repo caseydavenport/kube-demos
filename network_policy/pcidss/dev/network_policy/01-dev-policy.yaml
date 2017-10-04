@@ -1,0 +1,19 @@
+# This NetworkPolicy allows traffic only from pods
+# in development namespaces. 
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: development-only 
+  namespace: devel 
+spec:
+  # Apply to all pods in this namespace.
+  podSelector:
+    matchLabels: {}
+  ingress:
+  # Allow from all development pods. This will
+  # prevent external users from accessing our dev
+  # workloads as well.
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          tier: dev 
